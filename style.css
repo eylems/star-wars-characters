@@ -1,0 +1,75 @@
+.card {
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.card-img-top {
+    height: 300px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    color: #2c3e50;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    color: #34495e;
+}
+
+.title {
+    color: #978fa8; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.homeworld-icon {
+    color: #e74c3c;
+    margin-right: 0.5rem;
+}
+
+.btn-primary {
+    background-color: #9370DB !important; 
+    border-color: #9370DB !important;
+}
+
+.btn-primary:hover {
+    background-color: #7B68EE !important; 
+    border-color: #7B68EE !important;
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.modal-header {
+    border-bottom: 1px solid #333;
+}
+
+.modal-header .btn-close {
+    background-color: #fff;
+}
+
+.modal-body img {
+    max-height: 400px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.modal-title {
+    color: #978fa8;
+}
