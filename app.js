@@ -1,4 +1,4 @@
-// Star Wars karakterleri veri seti
+
 const characters = [
     {
         id: 1,
@@ -149,11 +149,11 @@ const characters = [
     }
 ];
 
-// HTML elementlerini seç
+
 const toggleButton = document.getElementById('toggleButton');
 const charactersContainer = document.getElementById('charactersContainer');
 
-// Karakter kartı template'i
+
 const characterCardTemplate = (character) => `
     <div class="col-md-4 mb-4">
         <div class="card h-100">
@@ -169,7 +169,7 @@ const characterCardTemplate = (character) => `
         </div>
     </div>
 
-    <!-- Karakter Modal -->
+    
     <div class="modal fade" id="characterModal${character.id}" tabindex="-1" aria-labelledby="characterModalLabel${character.id}" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -193,36 +193,72 @@ const characterCardTemplate = (character) => `
     </div>
 `;
 
-// Karakterleri gösterme fonksiyonu
+
 function renderCharacters() {
-    // Her karakter için template'i kullanarak HTML oluştur
+    
     const cardsHTML = characters.map(character => characterCardTemplate(character)).join('');
     
-    // Oluşturulan HTML'i container'a ekle
     charactersContainer.innerHTML = cardsHTML;
 
-    // Butonu "Gizle" moduna çevir
+    
     toggleButton.innerHTML = '<i class="fas fa-eye-slash me-2"></i>Karakterleri Gizle';
     toggleButton.classList.remove('btn-success');
     toggleButton.classList.add('btn-primary');
     
-    // Butona tıklama olayını removeCharacters fonksiyonuna bağla
+    
     toggleButton.onclick = removeCharacters;
 }
 
-// Karakterleri kaldırma fonksiyonu
+
 function removeCharacters() {
-    // Tüm kartları temizle
+    
     charactersContainer.innerHTML = '';
     
-    // Butonu "Göster" moduna çevir
+    
     toggleButton.innerHTML = '<i class="fas fa-users me-2"></i>Karakterleri Göster';
     toggleButton.classList.remove('btn-danger');
     toggleButton.classList.add('btn-primary');
     
-    // Butona tıklama olayını renderCharacters fonksiyonuna bağla
+   
     toggleButton.onclick = renderCharacters;
 }
 
-// İlk yüklenmede butona tıklama olayını renderCharacters fonksiyonuna bağla
+
 toggleButton.onclick = renderCharacters;
+
+const homeworldFilter = document.getElementById('homeworldFilter');
+
+
+function populateHomeworldFilter() {
+    const uniqueHomeworlds = [...new Set(characters.map(c => c.homeworld))];
+    uniqueHomeworlds.sort(); 
+
+    uniqueHomeworlds.forEach(homeworld => {
+        const option = document.createElement('option');
+        option.value = homeworld;
+        option.textContent = homeworld.charAt(0).toUpperCase() + homeworld.slice(1);
+        homeworldFilter.appendChild(option);
+    });
+}
+
+
+function renderFilteredCharacters() {
+    const selectedHomeworld = homeworldFilter.value;
+
+    const filteredCharacters = selectedHomeworld === 'all'
+        ? characters
+        : characters.filter(c => c.homeworld === selectedHomeworld);
+
+    charactersContainer.innerHTML = filteredCharacters.map(characterCardTemplate).join('');
+
+     toggleButton.innerHTML = '<i class="fas fa-eye-slash me-2"></i>Karakterleri Gizle';
+    toggleButton.classList.remove('btn-success');
+    toggleButton.classList.add('btn-primary');
+    toggleButton.onclick = removeCharacters;
+}
+
+
+homeworldFilter.addEventListener('change', renderFilteredCharacters);
+
+
+populateHomeworldFilter();
