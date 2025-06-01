@@ -36,12 +36,6 @@ CSS3 / Bootstrap 5
 
 JavaScript (Vanilla JS)
 
-🖼️ Ekran Görüntüsü
-GitHub’a ekran görüntüsü eklersen buraya aşağıdaki gibi bir markdown ekleyebilirsin:
-
-scss
-Kopyala
-Düzenle
 
 🧩 Öğrenilen Konular
 DOM üzerinden HTML elementi oluşturma (createElement)
